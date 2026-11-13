@@ -1,0 +1,37 @@
+[package]
+name = "ok_q3_converter"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+# `<[T]>::as_chunks`
+rust-version = "1.88"
+publish = false
+
+[[bin]]
+name = "okconv-q3"
+path = "src/main.rs"
+required-features = ["cli"]
+
+[[test]]
+name = "runtime"
+required-features = ["runtime"]
+
+[features]
+default = ["cli"]
+# the `okconv-q3` command line tool: the folder output, the viewer and its server, sounds (Vorbis, C) and videos (ffmpeg)
+cli = ["dep:clap", "dep:rayon", "dep:tiny_http", "dep:vorbis_rs", "dep:hound"]
+# `runtime::Converter`: the maps' runtime data (no std::fs, no external programs; builds for wasm32)
+runtime = []
+
+[dependencies]
+anyhow = "1.0.104"
+clap = { version = "4.6.7", features = ["derive"], optional = true }
+glam = "0.34.1"
+hound = { version = "3.5.1", optional = true }
+image = { version = "0.25.10", default-features = false, features = ["png", "jpeg", "tga"] }
+rayon = { version = "1.12.0", optional = true }
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.154"
+tiny_http = { version = "0.12.0", optional = true }
+vorbis_rs = { version = "0.5.6", optional = true }
+zip = { version = "9", default-features = false, features = ["deflate"] }

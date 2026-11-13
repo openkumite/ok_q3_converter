@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quake III Asset Viewer</title>
+<link rel="stylesheet" href="style.css">
+<script type="importmap">
+{ "imports": { "three": "./lib/three.module.js", "three/addons/": "./lib/addons/" } }
+</script>
+</head>
+<body>
+<header>
+  <div class="brand">Q3<b>EXPORT</b></div>
+  <nav id="tabs"></nav>
+  <div id="stats"></div>
+</header>
+<main>
+  <aside id="side">
+    <div class="filters">
+      <input id="search" type="search" placeholder="Filter…" autocomplete="off">
+      <select id="subfilter" hidden></select>
+    </div>
+    <div id="list"></div>
+  </aside>
+  <section id="content">
+    <div id="view3d" hidden>
+      <canvas id="canvas"></canvas>
+      <div id="toolbar"></div>
+      <div id="hud"></div>
+      <div id="loading" hidden>Loading…</div>
+    </div>
+    <div id="panel"></div>
+  </section>
+</main>
+<div id="lightbox" hidden></div>
+<script type="module" src="app.js"></script>
+</body>
+</html>
