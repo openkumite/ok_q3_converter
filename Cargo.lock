@@ -688,7 +688,6 @@ checksum = "49c5da94d280f7a27e8c937e9b73df2da3e23a2583f48471fd8fb4c72f9c1933"
 dependencies = [
  "aotuv_lancer_vorbis_sys",
  "errno",
- "getrandom",
  "ogg_next_sys",
  "thiserror",
  "tinyvec",

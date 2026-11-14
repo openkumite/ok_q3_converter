@@ -28,11 +28,14 @@ fn encode_ogg(wav: &[u8]) -> Result<(Vec<u8>, f32)> {
     }
     let duration = planes[0].len() as f32 / spec.sample_rate as f32;
     let mut out = vec![];
-    let mut enc = vorbis_rs::VorbisEncoderBuilder::new(
+    // A fixed stream serial (the default is random): each file holds one stream, so it need only be unique within the
+    // file, and the same sound converts to the same bytes.
+    let mut enc = vorbis_rs::VorbisEncoderBuilder::new_with_serial(
         NonZeroU32::new(spec.sample_rate).context("rate")?,
         NonZeroU8::new(ch as u8).context("channels")?,
         &mut out,
-    )?
+        1,
+    )
     .build()?;
     for start in (0..planes[0].len()).step_by(4096) {
         let block: Vec<&[f32]> = planes.iter().map(|p| &p[start..(start + 4096).min(p.len())]).collect();
@@ -92,6 +95,12 @@ pub fn export_video(ctx: &Ctx, out_dir: &Path, path: &str) -> Result<Value> {
             "libopus",
             "-b:a",
             "96k",
+            // the same bytes on every run: interleave strictly by timestamp (encoders run on their own threads) and
+            // leave out the version tags and random track / segment IDs
+            "-max_interleave_delta",
+            "0",
+            "-fflags",
+            "+bitexact",
         ])
         .arg(&dest)
         .stdin(Stdio::null())
