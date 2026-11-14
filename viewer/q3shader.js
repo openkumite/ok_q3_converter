@@ -139,20 +139,20 @@ varying vec2 vUv;
 varying vec4 vColor;
 varying vec3 vSkyDir;
 
-// The cloud dome: the view direction meets a sphere round the eye whose top is the cloud height.
+// The cloud dome: a sphere of radius R + h whose centre lies R below the eye, so its top is h above it. The view ray
+// t·v meets it where |t·v + (0, 0, R)|² = (R + h)², i.e. a·t² + 2·R·v.z·t − (2·R·h + h²) = 0 with a = v·v; t is the
+// positive root. The hit point, seen from the centre, gives the texture coordinates as angles.
 vec2 cloudSt(vec3 v) {
   float R = 4096.0, h = uCloudHeight;
   float a = dot(v, v);
-  float s = v.z*v.z*R*R + 2.0*(v.x*v.x + v.y*v.y + v.z*v.z)*R*h + (v.x*v.x + v.y*v.y + v.z*v.z)*h*h;
-  float p = (1.0 / (2.0 * a)) * (-2.0 * v.z * R + 2.0 * sqrt(s));
-  vec3 w = v * p; w.z += R;
-  w = normalize(w);
+  float t = (sqrt(R * R * v.z * v.z + a * (2.0 * R * h + h * h)) - R * v.z) / a;
+  vec3 w = normalize(v * t + vec3(0.0, 0.0, R));
   return vec2(acos(w.x), acos(w.y)) / 3.14159265;
 }
 
 vec4 skyBox(vec3 d) {
   vec3 a = abs(d);
-  // Faces: 0 rt(+X) 1 bk(+Y) 2 lf(-X) 3 ft(-Y) 4 up(+Z) 5 dn(-Z), matching sky_texorder.
+  // Faces in the order of the skybox images: 0 rt(+X) 1 bk(+Y) 2 lf(-X) 3 ft(-Y) 4 up(+Z) 5 dn(-Z).
   vec2 uv; int f;
   if (a.x >= a.y && a.x >= a.z) {
     if (d.x > 0.0) { f = 0; uv = vec2(-d.y, d.z) / a.x; } else { f = 2; uv = vec2(d.y, d.z) / a.x; }

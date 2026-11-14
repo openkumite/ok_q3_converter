@@ -11,7 +11,7 @@ use serde_json::{Map, Value, json};
 use std::collections::{BTreeMap, HashMap};
 
 const PATCH_LEVEL: usize = 8;
-/// Largest patch control grid side Q3 loads (MAX_PATCH_SIZE; ParseMesh drops the map past it).
+/// Largest patch control grid side the game loads (a map with a larger one is refused).
 const MAX_PATCH_SIZE: usize = 32;
 /// Vertices plus indices one map may emit. The largest Quake III Arena map (q3ctf3) emits about 0.76 M; the bound
 /// only stops crafted maps whose surfaces all share one vertex range (tiny once deflated) from exhausting memory.
@@ -74,7 +74,7 @@ fn cstr(d: &[u8]) -> String {
     String::from_utf8_lossy(&d[..end]).to_lowercase().replace('\\', "/")
 }
 
-/// Scale up and clamp while preserving hue, like R_ColorShiftLightingBytes.
+/// Scale up by the overbright shift; a channel past 255 scales all three down together, so the hue is kept.
 fn shift_color(r: u8, g: u8, b: u8) -> [u8; 3] {
     let s = 1u32 << OVERBRIGHT_SHIFT;
     let (mut r, mut g, mut b) = (r as u32 * s, g as u32 * s, b as u32 * s);
