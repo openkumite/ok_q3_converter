@@ -15,9 +15,9 @@ They are embedded unmodified in the `okconv-q3` binary for the viewer.
 
 ## Licenses used
 
-- MIT OR Apache-2.0: 61 crates
+- MIT OR Apache-2.0: 62 crates
+- Apache-2.0 OR MIT: 7 crates
 - MIT: 6 crates
-- Apache-2.0 OR MIT: 5 crates
 - BSD-3-Clause: 3 crates
 - Apache-2.0: 2 crates
 - BSD-3-Clause OR Apache-2.0: 2 crates
@@ -27,6 +27,7 @@ They are embedded unmodified in the `okconv-q3` binary for the viewer.
 - Zlib OR Apache-2.0 OR MIT: 2 crates
 - (MIT OR Apache-2.0) AND Unicode-3.0: 1 crate
 - 0BSD OR MIT OR Apache-2.0: 1 crate
+- CC0-1.0 OR MIT-0 OR Apache-2.0: 1 crate
 - MIT OR Apache-2.0 OR LGPL-2.1-or-later: 1 crate
 - Zlib: 1 crate
 
@@ -57,6 +58,7 @@ They are embedded unmodified in the `okconv-q3` binary for the viewer.
 | clap_derive | 4.6.7 | MIT OR Apache-2.0 | https://github.com/clap-rs/clap |
 | clap_lex | 1.1.1 | MIT OR Apache-2.0 | https://github.com/clap-rs/clap |
 | colorchoice | 1.0.5 | MIT OR Apache-2.0 | https://github.com/rust-cli/anstyle.git |
+| constant_time_eq | 0.6.1 | CC0-1.0 OR MIT-0 OR Apache-2.0 | https://codeberg.org/cesarb/constant_time_eq |
 | crc32fast | 1.5.3 | MIT OR Apache-2.0 | https://github.com/srijs/rust-crc32fast |
 | crossbeam-deque | 0.8.8 | MIT OR Apache-2.0 | https://github.com/crossbeam-rs/crossbeam |
 | crossbeam-epoch | 0.9.21 | MIT OR Apache-2.0 | https://github.com/crossbeam-rs/crossbeam |
@@ -68,7 +70,7 @@ They are embedded unmodified in the `okconv-q3` binary for the viewer.
 | find-msvc-tools | 0.1.15 | MIT OR Apache-2.0 | https://github.com/rust-lang/cc-rs |
 | flate2 | 1.1.10 | MIT OR Apache-2.0 | https://github.com/rust-lang/flate2-rs |
 | getrandom | 0.4.3 | MIT OR Apache-2.0 | https://github.com/rust-random/getrandom |
-| glam | 0.34.1 | MIT OR Apache-2.0 | https://github.com/bitshifter/glam-rs |
+| glam | 0.34.3 | MIT OR Apache-2.0 | https://github.com/bitshifter/glam-rs |
 | hashbrown | 0.17.1 | MIT OR Apache-2.0 | https://github.com/rust-lang/hashbrown |
 | heck | 0.5.0 | MIT OR Apache-2.0 | https://github.com/withoutboats/heck |
 | hound | 3.5.1 | Apache-2.0 | https://github.com/ruuda/hound |
@@ -104,6 +106,7 @@ They are embedded unmodified in the `okconv-q3` binary for the viewer.
 | shlex | 2.0.1 | MIT OR Apache-2.0 | https://github.com/comex/rust-shlex |
 | simd-adler32 | 0.3.10 | MIT | https://github.com/mcountryman/simd-adler32 |
 | strsim | 0.11.1 | MIT | https://github.com/rapidfuzz/strsim-rs |
+| syn | 2.0.119 | MIT OR Apache-2.0 | https://github.com/dtolnay/syn |
 | syn | 3.0.9 | MIT OR Apache-2.0 | https://github.com/dtolnay/syn |
 | thiserror | 2.0.21 | MIT OR Apache-2.0 | https://github.com/dtolnay/thiserror |
 | thiserror-impl | 2.0.21 | MIT OR Apache-2.0 | https://github.com/dtolnay/thiserror |
@@ -119,7 +122,9 @@ They are embedded unmodified in the `okconv-q3` binary for the viewer.
 | wasm-bindgen-shared | 0.2.129 | MIT OR Apache-2.0 | https://github.com/wasm-bindgen/wasm-bindgen/tree/master/crates/shared |
 | windows-link | 0.2.1 | MIT OR Apache-2.0 | https://github.com/microsoft/windows-rs |
 | windows-sys | 0.61.2 | MIT OR Apache-2.0 | https://github.com/microsoft/windows-rs |
-| zip | 9.1.2 | MIT | https://github.com/zip-rs/zip2 |
+| zeroize | 1.9.1 | Apache-2.0 OR MIT | https://github.com/RustCrypto/utils |
+| zeroize_derive | 1.5.0 | Apache-2.0 OR MIT | https://github.com/RustCrypto/utils |
+| zip | 9.5.1 | MIT | https://github.com/zip-rs/zip2 |
 | zlib-rs | 0.6.8 | Zlib | https://github.com/trifectatechfoundation/zlib-rs |
 | zmij | 1.0.23 | MIT | https://github.com/dtolnay/zmij |
 | zopfli | 0.8.4 | Apache-2.0 | https://github.com/zopfli-rs/zopfli |
